@@ -1,0 +1,152 @@
+<!-- ejercicio10.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 10 - Juego de Preguntas y Respuestas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .juego {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .pregunta {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .opciones label {
+      display: block;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .resultado {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="juego">
+    <div class="pregunta" id="pregunta"></div>
+    <div class="opciones">
+      <label><input type="radio" name="respuesta" value="0"> <span id="opcion1"></span></label>
+      <label><input type="radio" name="respuesta" value="1"> <span id="opcion2"></span></label>
+      <label><input type="radio" name="respuesta" value="2"> <span id="opcion3"></span></label>
+      <label><input type="radio" name="respuesta" value="3"> <span id="opcion4"></span></label>
+    </div>
+    <button onclick="verificarRespuesta()">Siguiente</button>
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    const preguntas = [
+      {
+        pregunta: "¿Cuál es la capital de Francia?",
+        opciones: ["Madrid", "Berlín", "París", "Roma"],
+        respuestaCorrecta: 2
+      },
+      {
+        pregunta: "¿Cuál es el símbolo químico del agua?",
+        opciones: ["O2", "H2O", "CO2", "O2H"],
+        respuestaCorrecta: 1
+      },
+      {
+        pregunta: "¿En qué continente se encuentra Egipto?",
+        opciones: ["Asia", "Europa", "África", "América"],
+        respuestaCorrecta: 2
+      }
+    ];
+
+    let preguntaActual = 0;
+    let puntuacion = 0;
+
+    function mostrarPregunta() {
+      const pregunta = preguntas[preguntaActual];
+      document.getElementById('pregunta').textContent = pregunta.pregunta;
+      document.getElementById('opcion1').textContent = pregunta.opciones[0];
+      document.getElementById('opcion2').textContent = pregunta.opciones[1];
+      document.getElementById('opcion3').textContent = pregunta.opciones[2];
+      document.getElementById('opcion4').textContent = pregunta.opciones[3];
+    }
+
+    function verificarRespuesta() {
+      const opciones = document.getElementsByName('respuesta');
+      let respuestaSeleccionada;
+
+      for (let i = 0; i < opciones.length; i++) {
+        if (opciones[i].checked) {
+          respuestaSeleccionada = parseInt(opciones[i].value);
+          break;
+        }
+      }
+
+      if (respuestaSeleccionada === undefined) {
+        alert("Por favor selecciona una respuesta.");
+        return;
+      }
+
+      if (respuestaSeleccionada === preguntas[preguntaActual].respuestaCorrecta) {
+        puntuacion++;
+      }
+
+      preguntaActual++;
+
+      if (preguntaActual < preguntas.length) {
+        mostrarPregunta();
+      } else {
+        mostrarResultado();
+      }
+
+      // Deseleccionar las respuestas para la siguiente pregunta
+      for (let i = 0; i < opciones.length; i++) {
+        opciones[i].checked = false;
+      }
+    }
+
+    function mostrarResultado() {
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = `Puntuación final: ${puntuacion} de ${preguntas.length}`;
+      resultado.style.display = 'block';
+      document.querySelector('button').disabled = true;
+    }
+
+    // Mostrar la primera pregunta al cargar la página
+    mostrarPregunta();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menú de Ejercicios - Patrick Corozo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #cce7ff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 25px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #aaccee;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Actividades HTML, CSS y JavaScript</h1>
+  <p>Desarrollado por <strong>Patrick Corozo</strong> – Tercer semestre</p>
+
+  <div class="grid">
+    <div class="card"><a href="ejercicio1.html">Ejercicio 1: Cambio de Estilo al Clic</a></div>
+    <div class="card"><a href="ejercicio2.html">Ejercicio 2: Calculadora Simple</a></div>
+    <div class="card"><a href="ejercicio3.html">Ejercicio 3: Cambio de Imagen al Pasar el Ratón</a></div>
+    <div class="card"><a href="ejercicio4.html">Ejercicio 4: Reloj Analógico</a></div>
+    <div class="card"><a href="ejercicio5.html">Ejercicio 5: Validación de Formulario</a></div>
+    <div class="card"><a href="ejercicio6.html">Ejercicio 6: Lista de Tareas Interactiva</a></div>
+    <div class="card"><a href="ejercicio7.html">Ejercicio 7: Menú de Navegación Desplegable</a></div>
+    <div class="card"><a href="ejercicio8.html">Ejercicio 8: Carrusel de Imágenes</a></div>
+    <div class="card"><a href="ejercicio9.html">Ejercicio 9: Temporizador de Cuenta Regresiva</a></div>
+    <div class="card"><a href="ejercicio10.html">Ejercicio 10: Juego de Preguntas y Respuestas</a></div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 - Patrick Corozo | Proyecto educativo HTML, CSS y JavaScript
+  </div>
+
+</body>
+</html>

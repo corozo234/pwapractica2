@@ -1,0 +1,84 @@
+<!-- ejercicio9.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 9 - Temporizador de Cuenta Regresiva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .temporizador {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .temporizador h2 {
+      margin-bottom: 20px;
+    }
+
+    .tiempo {
+      font-size: 48px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .mensaje {
+      font-size: 24px;
+      color: #28a745;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="temporizador">
+    <h2>Temporizador de Cuenta Regresiva</h2>
+    <div class="tiempo" id="tiempo">00:10</div>
+    <div class="mensaje" id="mensaje">¡Tiempo agotado!</div>
+  </div>
+
+  <script>
+    // Tiempo inicial en segundos (por ejemplo, 10 segundos)
+    let tiempoRestante = 30;
+    const tiempoElemento = document.getElementById('tiempo');
+    const mensajeElemento = document.getElementById('mensaje');
+
+    // Función para actualizar el temporizador
+    function actualizarTemporizador() {
+      const minutos = Math.floor(tiempoRestante / 60);
+      const segundos = tiempoRestante % 60;
+
+      // Formatear el tiempo en formato MM:SS
+      tiempoElemento.textContent = `${formatTiempo(minutos)}:${formatTiempo(segundos)}`;
+
+      if (tiempoRestante <= 0) {
+        clearInterval(intervalo);
+        mensajeElemento.style.display = 'block'; // Mostrar mensaje de tiempo agotado
+      } else {
+        tiempoRestante--; // Decrementar el tiempo restante
+      }
+    }
+
+    // Función para dar formato al tiempo (agregar un 0 si es menor de 10)
+    function formatTiempo(tiempo) {
+      return tiempo < 10 ? '0' + tiempo : tiempo;
+    }
+
+    // Actualizar el temporizador cada segundo
+    const intervalo = setInterval(actualizarTemporizador, 1000);
+  </script>
+
+</body>
+</html>

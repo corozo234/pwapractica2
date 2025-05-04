@@ -1,0 +1,91 @@
+<!-- ejercicio4.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 4 - Reloj Analógico</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .reloj {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Clock_face_icon.svg/512px-Clock_face_icon.svg.png') no-repeat center center;
+      background-size: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .manecilla {
+      position: absolute;
+      width: 50%;
+      height: 6px;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0% 50%;
+      transform: rotate(90deg);
+    }
+
+    #hora {
+      height: 8px;
+      background: url('https://i.imgur.com/8dF1yC0.png') no-repeat center center;
+      background-size: contain;
+    }
+
+    #minuto {
+      height: 6px;
+      background: url('https://i.imgur.com/L1wZKDP.png') no-repeat center center;
+      background-size: contain;
+    }
+
+    #segundo {
+      height: 4px;
+      background: url('https://i.imgur.com/GH9mZRP.png') no-repeat center center;
+      background-size: contain;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Ejercicio 4: Reloj Analógico</h2>
+  <div class="reloj">
+    <div id="hora" class="manecilla"></div>
+    <div id="minuto" class="manecilla"></div>
+    <div id="segundo" class="manecilla"></div>
+  </div>
+
+  <script>
+    function actualizarReloj() {
+      const ahora = new Date();
+      const segundos = ahora.getSeconds();
+      const minutos = ahora.getMinutes();
+      const horas = ahora.getHours();
+
+      const anguloSegundos = segundos * 6;
+      const anguloMinutos = minutos * 6 + segundos * 0.1;
+      const anguloHoras = (horas % 12) * 30 + minutos * 0.5;
+
+      document.getElementById("hora").style.transform = `rotate(${anguloHoras}deg)`;
+      document.getElementById("minuto").style.transform = `rotate(${anguloMinutos}deg)`;
+      document.getElementById("segundo").style.transform = `rotate(${anguloSegundos}deg)`;
+    }
+
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- ejercicio3.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 3 - Cambio de Imagen al Pasar el Ratón</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .imagen-cambio {
+      width: 300px;
+      height: 300px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      object-fit: cover;
+    }
+
+    .imagen-cambio:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Ejercicio 3: Cambio de Imagen al Pasar el Ratón</h2>
+  <img 
+    src="imagenes/img1.jpg" 
+    id="miImagen" 
+    class="imagen-cambio" 
+    alt="Imagen de equipo"
+    onmouseover="cambiarImagen()"
+    onmouseout="restaurarImagen()"
+  >
+
+  <script>
+    function cambiarImagen() {
+      document.getElementById('miImagen').src = 'imagenes/img2.jpg';
+    }
+
+    function restaurarImagen() {
+      document.getElementById('miImagen').src = 'imagenes/img1.jpg';
+    }
+  </script>
+
+</body>
+</html>
