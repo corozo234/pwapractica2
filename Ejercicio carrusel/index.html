@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrusel de Imágenes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Título arriba del carrusel -->
+    <h1 class="titulo">Carrusel de paisajes que tomé en el último mes</h1>
+
+    <!-- Carrusel de imágenes -->
+    <div class="carrusel-container">
+        <button id="prev">&#10094;</button>
+        <div class="carrusel">
+            <img src="img1.jpg" class="slide active">
+            <img src="img2.jpg" class="slide">
+            <img src="img3.jpg" class="slide">
+            <img src="img4.jpg" class="slide">
+            <img src="img5.jpg" class="slide">
+        </div>
+        <button id="next">&#10095;</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let current = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        document.getElementById('prev').addEventListener('click', () => {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        });
+    </script>
+</body>
+</html>
